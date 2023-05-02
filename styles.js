@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
       borderBottomColor: '#BA7BA1',
       // marginRight:20
     },
-    listContainer: {
+    listItems: {
         marginTop: 10,
         padding: 10,
         borderWidth: 0.5,
