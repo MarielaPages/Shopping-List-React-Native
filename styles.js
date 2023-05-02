@@ -19,6 +19,12 @@ export const styles = StyleSheet.create({
       borderBottomWidth: 0.5,
       borderBottomColor: '#BA7BA1',
       // marginRight:20
+    },
+    listContainer: {
+        marginTop: 10,
+        padding: 10,
+        borderWidth: 0.5,
+        width: '80%'
     }
   });
   
