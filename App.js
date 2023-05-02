@@ -8,7 +8,7 @@ export default function App() {
         <TextInput placeholder='Enter something' style={styles.input}/>
         <Button title='Add' color={'#C28CAE'}/>
       </View>
-      <View>
+      <View style={styles.li} > 
         <View style={styles.listItems}>
           <Text>Apples</Text>
         </View>
