@@ -47,7 +47,7 @@ export default function App() {
       <View style={styles.listContainer} >
         {list.map(listObject => { //Para cada objeto del array, que genere esos componentes que luego se renderizaran
           return(
-            <View style={styles.listItems}>
+            <View key={listObject.id} style={styles.listItems}>
               <Text>{listObject.value}</Text>
             </View>
           )
