@@ -1,4 +1,4 @@
-import { Text, View, TextInput, Button } from 'react-native';
+import { Text, View, TextInput, Button, FlatList } from 'react-native';
 import { styles } from './styles.js'
 import { useState } from 'react';
 
@@ -44,15 +44,18 @@ export default function App() {
         />
         <Button title='Add' color={'#C28CAE'} onPress={onAddList}/>
       </View>
-      <View style={styles.listContainer} >
-        {list.map(listObject => { //Para cada objeto del array, que genere esos componentes que luego se renderizaran
+      <FlatList 
+        style={styles.listContainer}
+        data={list} //data el array list, toma como valor ese array
+        renderItem={ ({ item }) => { //Tomo como argumento de la funcion a cada elemento del array que genera react native con mi array data
           return(
-            <View key={listObject.id} style={styles.listItems}>
-              <Text>{listObject.value}</Text>
-            </View>
+          <View style={styles.listItems}>
+            <Text>{item.value}</Text>
+          </View>
           )
-        })} 
-      </View>
+        }}
+        keyExtractor={(item) => item.id} //Este keyExtracttor lo que hace es meter ese id que le digo que tome en la funcion de la propiedad renderItem
+      />
     </View>
   );
 }
