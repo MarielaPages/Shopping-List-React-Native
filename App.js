@@ -15,10 +15,9 @@ export default function App() {
       
       let nextId = 0;
 
-            if(list.legth === 0){
+            if(list.length === 0){
               nextId = 1
-            }
-            else{
+            }else{
                 let lastId=undefined
                 list.forEach(element => {
                     lastId=element.id
