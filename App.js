@@ -46,8 +46,8 @@ export default function App() {
       </View>
       <FlatList 
         style={styles.listContainer}
-        data={list} //data el array list, toma como valor ese array
-        renderItem={ ({ item }) => { //Tomo como argumento de la funcion a cada elemento del array que genera react native con mi array data
+        data={list} //data toma el array list y lo convierte internamente en un array de objetos donde cada propiedad item de cada objeto de data contiene a cada uno de los objetos de list. 
+        renderItem={ ({ item }) => { //Tomo como argumento de la funcion, de forma desestructurada, a cada elemento del array que genera react native en mi array data en las propiedades item (que son cada elemento de list)
           return(
           <View style={styles.listItems}>
             <Text>{item.value}</Text>
