@@ -1,6 +1,7 @@
-import { Text, View, TextInput, Button, FlatList, TouchableOpacity, Modal } from 'react-native';
+import { Text, View, TextInput, Button, FlatList, TouchableOpacity } from 'react-native';
 import { styles } from './styles.js'
 import { useState } from 'react';
+import ModalItem from './src/components/modal/modal.js'
 
 //Funcion que devuelve lo que se renderiza o re-renderiza teniendo en cuenta cambios de estado o props
 export default function App() {
@@ -41,11 +42,13 @@ export default function App() {
   }
 
   const onDeleteItem = (id) => {
-
+    setList(list.filter(elem => id !== elem.id)) //seteamos el list con todos los elementos menos el que estamos borrando. 
+    setModalVisible(false) //Lo invisibilisamos (al modal) una vez que se borra el elemento pa ver la lista que quedo sin ese elem
   }
 
   const onCancelModal = () => {
-
+    setModalVisible(false) //Lo invisibilisamos
+    setSelectedElement(null) //Limpiamos el estado que tendria el elemento que se clickeo
   }
 
   return (
@@ -60,7 +63,6 @@ export default function App() {
         <Button title='Add' color={'#C28CAE'} onPress={onAddList}/>
       </View>
       <FlatList 
-        style={styles.listContainer}
         data={list} //data toma el array list y lo convierte internamente en un array de objetos donde cada propiedad item de cada objeto de data contiene a cada uno de los objetos de list. 
         renderItem={ ({ item }) => { //Tomo como argumento de la funcion, de forma desestructurada, a cada elemento del array que genera react native en mi array data en las propiedades item (que son cada elemento de list)
           return(
@@ -72,23 +74,12 @@ export default function App() {
         keyExtractor={(item) => item.id} //Este keyExtracttor lo que hace es meter ese id que le digo que tome en la funcion de la propiedad renderItem. 
         alwaysBounceVertical={false}
       />
-      <Modal //Modal nunca puede recibir estilos. Es parecido al componente Button. Los estilos dependen del contenedor que este dentro del Modal
-        visible={modalVisible} //Toma el valor de true o false del estado que arme. Justamente cuando aprete el item de la lista pasara a true y se abrira. Ademas, se seteara el otro estado con el id del elemento seleccionado.
-        animationType='slide'>
-          <View style={styles.modalContainer}>
-            <View style={styles.modalViewContainer}>
-              <Text style={styles.modalTitle}>Details:</Text>
-              <View style={styles.modalDetailContainer}>
-                <Text style={styles.modalDetailMessage}>Are you sure you want to delete this item?</Text>
-                <Text style={styles.modalSelectedItem}>{selectedElement?.value}</Text>
-              </View>
-              <View style={styles.modalButtonContainer}>
-                <Button title='Delete' color={'#C28CAE'} onPress={() => onDeleteItem(selectedElement?.id)}/>
-                <Button title='Cancel' color={'#C28CAE'} onPress={() => onCancelModal()}/>
-              </View>
-            </View>
-          </View>
-      </Modal> 
+      <ModalItem 
+        modalVisible={modalVisible}
+        selectedElement={selectedElement}
+        onDeleteItem={onDeleteItem}
+        onCancelModal={onCancelModal}
+      />
     </View>
   );
 }

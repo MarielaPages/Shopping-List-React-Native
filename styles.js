@@ -26,30 +26,6 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         width: '80%',
         backgroundColor: '#BA7BA1'
-    },
-    modalContainer: {
-      flex: 1,
-      backgroundColor: '#fff',
-      marginHorizontal: 20
-    },
-    modalViewContainer: {
-      width: '100%',
-      alignItems: 'center'
-    },
-    modalTitle: {
-      fontWeight: 'bold'
-    },
-    modalDetailContainer: {
-      alignItems: 'center'
-    },
-    modalDetailMessage: {
-
-    },
-    modalSelectedItem: {
-
-    },
-    modalButtonContainer: {
-
     }
   });
   
