@@ -5,3 +5,4 @@
 export { default as ModalItem } from './modal/modal.js'
 export { default as AddItem } from './input/addItem.js'
 export { default as ItemList } from './list/itemList.js'
+export { default as Card } from './card/card.js'

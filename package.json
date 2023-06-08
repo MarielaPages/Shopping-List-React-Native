@@ -9,13 +9,19 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "eslint": "^8.42.0",
+    "eslint-config-universe": "^11.2.0",
     "expo": "~48.0.11",
     "expo-status-bar": "~1.4.4",
+    "prettier": "^2.8.8",
     "react": "18.2.0",
     "react-native": "0.71.8"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
+  },
+  "eslintConfig": {
+    "extends": "universe/native"
   },
   "private": true
 }
